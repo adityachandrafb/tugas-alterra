@@ -3,12 +3,11 @@ package main
 import (
 	"study-timer/config"
 	"study-timer/route"
-
-	"github.com/labstack/echo/v4"
+	"github.com/labstack/echo"
 )
 
 func main() {
-	config.initDB()
+	config.InitDB()
 	config.InitMigration()
 
 	app := echo.New()
