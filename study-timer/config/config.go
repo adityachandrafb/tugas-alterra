@@ -21,5 +21,9 @@ func InitDB() {
 
 // fungsi bikin tabel otomatis
 func InitMigration() {
-	DB.AutoMigrate(&model.User{})
+	DB.AutoMigrate(
+		&model.User{},
+		&model.Tasks{},
+
+	)
 }
