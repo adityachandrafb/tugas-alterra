@@ -7,6 +7,7 @@ import (
 	"github.com/labstack/echo"
 )
 
+ //menampilkan data user
 func GetAllUsersController(c echo.Context) error {
 	users := database.GetUsers()
 	return c.JSON(http.StatusOK, echo.Map{
@@ -15,6 +16,7 @@ func GetAllUsersController(c echo.Context) error {
 	})
 }
 
+ //menampilkan data user dengan ID
 func GetUserByIDController(c echo.Context) error {
 	id := c.Param("id")
 	user := database.GetUserByID(id)
@@ -24,6 +26,7 @@ func GetUserByIDController(c echo.Context) error {
 	})
 }
 
+ //menghapus data user dg ID
 func DeleteUserByIDController(c echo.Context) error {
 	id := c.Param("id")
 	database.DeleteUserByID(id)
@@ -32,13 +35,14 @@ func DeleteUserByIDController(c echo.Context) error {
 	})
 }
 
+// mengupdate data user dg ID
 func UpdateUserByIDController(c echo.Context) error {
 	id := c.Param("id")
 
 	var user model.User
 	if err := c.Bind(&user); err != nil {
 		return c.JSON(http.StatusOK, echo.Map{
-			"message": "CreateUserController",
+			"message": "UpdateUserByIDController",
 			"error":   err.Error(),
 		})
 	}
@@ -49,6 +53,7 @@ func UpdateUserByIDController(c echo.Context) error {
 	})
 }
 
+// menambah user baru
 func CreateUserController(c echo.Context) error {
 	var newUser model.User
 	if err := c.Bind(&newUser); err != nil {
@@ -124,6 +129,7 @@ func CreateUserController(c echo.Context) error {
 // 	})
 // }
 
+// /////////////////////////////////////////////////////////////////////////////////////////////////////
 // import (
 // 	"net/http"
 // 	"study-timer/database"
