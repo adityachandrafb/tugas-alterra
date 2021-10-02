@@ -1,12 +1,19 @@
- package model
+package model
 
-import "gorm.io/gorm"
+import (
+	"time"
+	"gorm.io/gorm"
+)
 
 type Task struct {
 	gorm.Model
 	ID      	uint   	`gorm:"foreignkey"`
 	Name    	string 	`json:"name"`
-	Deadline    string	`json:"date"` //date
-	Timer 		*Timer 	
+	Deadline    time.Time	`json:"deadline"`
+	// Timer 		*Timer 	`json:"timer,omitempty"`
 	Priority	bool  	`json:"priority"`//penting & mendesak atau tidak
+	UserID		uint	`json:"user_id"`	
+	User		*User 	`json:"user,omitempty"`
 }
+
+type Tasks []Task

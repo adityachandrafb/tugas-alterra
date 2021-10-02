@@ -12,5 +12,8 @@ func main() {
 
 	app := echo.New()
 	route.NewUser(app)
+	route.NewTask(app)
+	route.NewGoal(app)
+	
 	app.Start(":8080")
 }

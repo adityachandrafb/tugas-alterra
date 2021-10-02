@@ -5,10 +5,11 @@ import (
 	"github.com/labstack/echo"
 )
 
-func NewUser(app *echo.Echo) {
-	app.GET("/users", controller.GetAllUsersController)
-	app.POST("/users", controller.CreateUserController)
-	app.GET("/users/:id", controller.GetUserByIDController)
-	app.DELETE("/users/:id", controller.DeleteUserByIDController)
-	app.PUT("/users/:id", controller.UpdateUserByIDController)
+func NewReport(app *echo.Echo) {
+	app.GET("/users", controller.GetAllReportController)
+	// app.POST("/users", controller.CreateReportController)
+	app.GET("/users/:id", controller.GetReportByIDController)
+	app.GET("/users/:week", controller.GetReportByWeekController)
+	// app.DELETE("/users/:id", controller.DeleteReportByIDController)
+	// app.PUT("/users/:id", controller.UpdateReportByIDController)
 }

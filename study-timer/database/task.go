@@ -5,7 +5,7 @@ import (
 	"study-timer/model"
 )
 
-func GetAllTask() []model.Task {
+func GetAllTasks() []model.Task {
 	var task []model.Task
 	config.DB.Find(&task)
 	return task

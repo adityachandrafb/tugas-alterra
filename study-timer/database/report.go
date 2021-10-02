@@ -28,13 +28,13 @@ func GetReportByID(id string) model.Report {
 
 //membuat report
 func CreateReport(goal string) model.Report {
-	var report model.Goals
+	var report model.Report
 	config.DB.Create(&report)
 	return report
 }
 
-// update report setiap ada goals baru tercapai
-// func UpdateReportByID(id string, task model.Task) {
-// 	config.DB.Where("id = ?", id).Updates(&task)
-// }
+//update report setiap ada goals baru tercapai
+func UpdateReportByID(id string, task model.Task) {
+	config.DB.Where("id = ?", id).Updates(&task)
+}
 

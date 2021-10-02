@@ -23,7 +23,8 @@ func InitDB() {
 func InitMigration() {
 	DB.AutoMigrate(
 		&model.User{},
-		&model.Tasks{},
+		&model.Task{},
+		&model.Goal{},
 
 	)
 }

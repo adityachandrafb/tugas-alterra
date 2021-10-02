@@ -7,7 +7,7 @@ import (
 	"github.com/labstack/echo"
 )
 
-//menampilkan data goal
+//menampilkan semua data goal
 func GetAllGoalsController(c echo.Context) error {
 	goals := database.GetAllGoals()
 	return c.JSON(http.StatusOK, echo.Map{
@@ -39,7 +39,7 @@ func DeleteGoalsByIDController(c echo.Context) error {
 func UpdateGoalsByIDController(c echo.Context) error {
 	id := c.Param("id")
 
-	var goal model.Goals
+	var goal model.Goal
 	if err := c.Bind(&goal); err != nil {
 		return c.JSON(http.StatusOK, echo.Map{
 			"message": "UpdateGoalsByIDController",
@@ -55,7 +55,7 @@ func UpdateGoalsByIDController(c echo.Context) error {
 
 // menambah goal baru
 func CreateGoalsController(c echo.Context) error {
-	var newGoals model.Goals
+	var newGoals model.Goal
 	if err := c.Bind(&newGoals); err != nil {
 		return c.JSON(http.StatusOK, echo.Map{
 			"message": "CreateGoalsController",
