@@ -5,7 +5,7 @@ import (
 	"study-timer/model"
 )
 
-func GetAllNotifications() []model.Notification {
+func GetNotifications() []model.Notification {
 	var goal []model.Notification
 	config.DB.Find(&goal)
 	return goal

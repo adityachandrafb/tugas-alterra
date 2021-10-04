@@ -8,7 +8,7 @@ import (
 type Notification struct {
 	gorm.Model
 	ID       		uint   		`gorm:"primarykey"`
-	reminder 		string		
+	NotifName 		string		`json:"notif_id"`
 	time			time.Time
 	UserID			uint		`json:"user_id"`	
 	GoalID			uint 		`json:"goal,omitempty"`

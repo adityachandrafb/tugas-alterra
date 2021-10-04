@@ -1,22 +1,24 @@
 package database
 
 import (
-	
+	"study-timer/config"
+	"study-timer/model"
 )
 
+func StartTimer() model.Pomodoro {
+	var start model.Pomodoro
+	config.DB.Where("loop is null").Find(&start)
+	return start
+}
 
+func PauseTimer(id string) model.Pomodoro {
+	var pause model.Pomodoro
+	config.DB.Where("min is not 25", id).Find(&pause)
+	return pause
+}
 
-
-
-// type Timer struct {
-// 	gorm.Model
-// 	ID				uint   		`gorm:"foreignkey"`
-// 	Duration     time.Duration	`json:"duration"`
-// 	StartAt      time.Time		`json:"start_at"`
-// 	EndAt        time.Time		`json:"end_at"`
-// 	StopAt       null.Time		`json:"stop_at"`
-// 	LastPauseAt  null.Time		`json:"last_pause_at"`
-// 	LastResumeAt null.Time		`json:"last_resume_at"`
-// 	FinishAt     null.Time		`json:"finish_at"`
-// 	Completed    bool			`json:"completed"`
-// }
+func BreakTimer(id string) model.Pomodoro {
+	var breaks model.Pomodoro
+	config.DB.Where("min is 25", id).Find(&breaks)
+	return breaks
+}

@@ -26,16 +26,6 @@ func GetTaskByIDController(c echo.Context) error {
 	})
 }
 
-// //++menampilkan data task dengan nama
-// func GetTaskByNameController(c echo.Context) error {
-// 	id := c.Param("name")
-// 	task := database.GetTaskByName(c.ParamNames()[])
-// 	return c.JSON(http.StatusOK, echo.Map{
-// 		"message": "GetTaskByNameController",
-// 		"data":    task,
-// 	})
-// }
-	
  //menghapus data task dg ID
 func DeleteTaskByIDController(c echo.Context) error {
 	id := c.Param("id")
