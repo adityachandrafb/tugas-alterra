@@ -7,7 +7,7 @@ import (
 
 func StartTimer() model.Pomodoro {
 	var start model.Pomodoro
-	config.DB.Where("loop is null").Find(&start)
+	config.DB.Where("min is 1").Find(&start)
 	return start
 }
 
