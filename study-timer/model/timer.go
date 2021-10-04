@@ -1,29 +1,34 @@
 package model
 
-import ()
-// 	"time"
-// 	"gorm.io/gorm"
-// )
+import (
+	"time"
+	"gopkg.in/guregu/null.v4"
+	"gorm.io/gorm"
+)
+type Pomodoro struct {
+	Timer time.Time
+	Loop  int
+	Min   int
+	Sec   int
+}
 
-// const (
-// 	Duration = 25 * time.Minute
-// 	Shortbreak = 5 * time.Minute
-// 	Longbreak = 30 * time.Minute
-// )
+const (
+	Duration = 25 * time.Minute
+	Shortbreak = 5 * time.Minute
+	Longbreak = 15 * time.Minute
+	LongbreakInterval = 4 
+)
 
-// var MyTask []*model.Tasks //`gorm:"foreignkey:username;references:ID"` //One to One Tasks dengan refrensi ID, array karena task yg dikerjakan bisa lebih dari satu
+type Timer struct {
+	gorm.Model
+	ID				uint   		`gorm:"foreignkey"`
+	Duration     time.Duration	`json:"duration"`
+	StartAt      time.Time		`json:"start_at"`
+	// PauseAt      time.Now		`json:"pause_at"`
+	// ResumeAt     time.Now		`json:"pause_at"`
+	StopAt       null.Time		`json:"stop_at"`
+	Completed    bool			`json:"completed"`
+}
 
-// type Timer struct {
-// 	gorm.Model
-// 	ID				uint   		`gorm:"foreignkey"`
-// 	Duration     time.Duration	`json:"duration"`
-// 	StartAt      time.Time		`json:"start_at"`
-// 	EndAt        time.Time		`json:"end_at"`
-// 	StopAt       null.Time		`json:"stop_at"`
-// 	LastPauseAt  null.Time		`json:"last_pause_at"`
-// 	LastResumeAt null.Time		`json:"last_resume_at"`
-// 	FinishAt     null.Time		`json:"finish_at"`
-// 	Completed    bool			`json:"completed"`
-// }
 
 //timer perlu gak sih masukkin json?

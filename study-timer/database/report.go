@@ -5,9 +5,10 @@ import (
 	"study-timer/model"
 )
 
-//semua report
+//cari rport berdasarkan user id
 func GetAllReport() []model.Report {
 	var report []model.Report
+	//tambahin where user id
 	config.DB.Find(&report)
 	return report
 }
