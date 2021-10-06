@@ -39,6 +39,6 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-             docker pull adityachandrafb/study-timer; \
-             docker rm -f study-timer; \
-             docker run -d --network host --name study-timer adityachandrafb/study-timer
+             sudo docker pull adityachandrafb/study-timer; \
+             sudo docker rm -f study-timer; \
+             sudo docker run -d --network host --name study-timer adityachandrafb/study-timer
