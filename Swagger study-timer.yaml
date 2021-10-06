@@ -1,0 +1,271 @@
+swagger : '2.0'
+info :
+  title : Concerntra Study-Timer
+  description : Dokumentasi API back-end study timer oleh Aditya Chandra Febriyanti
+  version : "v1.0"
+  
+paths :
+  # USER
+  /users :
+    get :
+      summary : mencari semua user
+      description : mencari semua data user di database
+      responses : 
+        "200" :
+          description : sukses
+        "400" :
+          description : data user tidak ditemukan
+          
+    post :
+      summary : pendaftaran user
+      description : menginput data user untuk mendaftar akun baru
+      responses : 
+        "200" :
+          description : sukses
+        "400" :
+          description : data user yang dimasukkan salah/ tidak sesuai format
+          
+    delete :
+      summary : menghapus akun user
+      description : menghapus akun user dari database
+      responses : 
+        "200" :
+          description : sukses
+        "400" :
+          description : data user gagal dihapus
+          
+    put :
+      summary : update data user
+      description : mengganti data user yang ada di database
+      responses :
+        "200" :
+          description : sukses
+        "400" :
+          description : data user gagal di update
+    
+  /users/id :
+    get :
+      summary : mencari user 
+      description : mencari user dengan menggunakan id
+      responses : 
+        "200" :
+          description : sukses
+        "400" :
+          description : data user tidak ditemukan
+          
+  #GOALS
+  /goals :
+    get :
+      summary : mencari goals user
+      description : mencari data goals dengan id 
+      responses : 
+        "200" :
+          description : sukses
+        "400" :
+          description : data user tidak ditemukan
+          
+    post :
+      summary : memasukkan goals baru
+      description : menginput data goals baru yang akan dicapai
+      responses : 
+        "200" :
+          description : sukses
+        "400" :
+          description : data goals yang dimasukkan salah/ tidak sesuai format
+  /goals/id :
+    get :
+      summary : mencari goals user
+      description : mencari data goals user dengan menggunakan id goals
+      responses : 
+        "200" :
+          description : sukses
+        "400" :
+          description : data user tidak ditemukan
+          
+    delete :
+      summary : menghapus goals 
+      description : menghapus goals yang telah dibuat oleh user enggunakan id goals
+      responses : 
+        "200" :
+          description : sukses
+        "400" :
+          description : data goals gagal dihapus
+          
+    put :
+      summary : update data goal
+      description : mengganti data goals sesuai apa yang telah dicapai user enggunakan id goals
+      responses :
+        "200" :
+          description : sukses
+        "400" :
+          description : data goals gagal di update
+
+  #REPORT
+  /report :
+    get :
+      summary : mencari report user
+      description : mencari semua data report user
+      responses : 
+        "200" :
+          description : sukses
+        "400" :
+          description : data report tidak ditemukan
+          
+    post :
+      summary : memasukkan report baru
+      description : menginput data  report dari goal yang telah tercapai
+      responses : 
+        "200" :
+          description : sukses
+        "400" :
+          description : data report gagal dimasukkan
+    
+  /report/id
+    get :
+      summary : mencari report user
+      description : mencari data goals user dengan menggunakan id report
+      responses : 
+        "200" :
+          description : sukses
+        "400" :
+          description : data report tidak ditemukan
+  
+  /report?week=1
+    get :
+      summary : mencari report user
+      description : mencari data report user dengan menggunakan data week/minggu
+      responses : 
+        "200" :
+          description : sukses
+        "400" :
+          description : data report week tidak ditemukan
+  
+  #NOTIFICATIONS
+  /notif :
+    get :
+      summary : mencari notification user
+      description : mencari semua data notification user
+      responses : 
+        "200" :
+          description : sukses
+        "400" :
+          description : data notification tidak ditemukan
+          
+    post :
+      summary : memasukkan notification baru
+      description : menginput data  notification dari goals yang belum tercapai
+      responses : 
+        "200" :
+          description : sukses
+        "400" :
+          description : data notification gagal dimasukkan
+    
+  /notif/:id
+    get :
+      summary : mencari notification user
+      description : mencari data notification user dengan menggunakan id notification
+      responses : 
+        "200" :
+          description : sukses
+        "400" :
+          description : data notification tidak ditemukan
+  
+  delete :
+      summary : menghapus  
+      description : menghapus notification yang telah dibuat oleh user enggunakan id notification
+      responses : 
+        "200" :
+          description : sukses
+        "400" :
+          description : data notification gagal dihapus
+          
+    put :
+      summary : update data goal
+      description : mengganti data notification
+      responses :
+        "200" :
+          description : sukses
+        "400" :
+          description : data notification gagal di update
+          
+  #TASKS
+  /tasks :
+    get :
+      summary : mencari tasks user
+      description : mencari semua data tasks user
+      responses : 
+        "200" :
+          description : sukses
+        "400" :
+          description : data tasks tidak ditemukan
+          
+    post :
+      summary : memasukkan tasks baru
+      description : menginput data tasks baru ke database
+      responses : 
+        "200" :
+          description : sukses
+        "400" :
+          description : data tasks gagal dimasukkan
+    
+  /tasks/id
+    get :
+      summary : mencari tasks user
+      description : mencari data tasksuser dengan menggunakan id tasks
+      responses : 
+        "200" :
+          description : sukses
+        "400" :
+          description : data tasks tidak ditemukan
+  
+  delete :
+      summary : menghapus tasks
+      description : menghapus tasks yang telah dibuat oleh user menggunakan id tasks
+      responses : 
+        "200" :
+          description : sukses
+        "400" :
+          description : data tasks gagal dihapus
+          
+    put :
+      summary : update data tasks
+      description : mengganti data tasks
+      responses :
+        "200" :
+          description : sukses
+        "400" :
+          description : data tasks gagal di update
+          
+  #TIMER
+  /timer :
+    get :
+      summary : update status timer
+      description : mengetahui update data timer sedang start, pause,stop
+      responses : 
+        "200" :
+          description : sukses
+        "400" :
+          description : tidak dapat mengetahui aktivitas timer
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
