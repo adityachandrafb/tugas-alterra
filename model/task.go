@@ -12,4 +12,5 @@ type Task struct {
 	Deadline    time.Time	`json:"deadline"`
 	UserID		uint	`json:"user_id"`	
 	User		*User 	`json:"user,omitempty"`
+	Priority 	bool 	`json:"priority"`
 }
