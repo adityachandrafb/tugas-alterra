@@ -1,73 +1,76 @@
 package controller
 
-import ()
-
+import (
+	"net/http"
+	"study-timer/database"
+	"github.com/labstack/echo"
 )
 
-
-//pomodoro timer
-func StartPomodoro(cycles int64) {
-	//Belajar 25 menit
-	var minutesPassed int64 = 0
-	for i := 0; i < 25; i++ {
-		time.Sleep(time.Minute * 1)
-		minutesPassed++
-		t := 25 - minutesPassed
-		return StartStudy
-	}
-	return PauseTimer
-
-	// Break 5 menit
-	minutesPassed = 0
-	for i := 0; i < 5; i++ {
-		time.Sleep(time.Minute * 1)
-		minutesPassed++
-		t := 5 - minutesPassed
-		return BreakStudy
-	}
-	return StartStudy
-}
-
-
-//memulai timer 25 menit belajar
-func StartTimerController (c echo.Context) error {
-	if StartStudy == true {
-		return c.JSON(http.StatusOK, echo.Map{
-			"message" : "Time to study!",
-		})
-}
-
-
-//mengetahui sisa waktu timer
-func PauseTimerController(c echo.Context) error {
-	remainTime = 25 - const.time.Duration
+//menampilkan status timer mulai
+ func StartTimerController(c echo.Context) error {
+	status := c.Param("start")
+	database.StartTimer(status)
 	return c.JSON(http.StatusOK, echo.Map{
-		"message": "Lets go back to study!",
-		"Remain timer" : remainTime
+		"message": "Time to study!",
 	})
 }
 
-//memulai timer 5 menit istirahat
-func BreakTimerController(c echo.Context) error {
-	if BreakStudy == true {
-		return c.JSON(http.StatusOK, echo.Map{
-			"message" : "Enjoy your break time!",
-		})
+
+//menampilkan status timer stop
+func StopTimerController(c echo.Context) error {
+	status := c.Param("stop")
+	database.StopTimer(status)
+	return c.JSON(http.StatusOK, echo.Map{
+		"message": "Finish! You are doing great job!",
+	})
 }
 
-//menyelsaikan timer dan mengirim ke report
-func FinishTimer(c echo.Context) error {
-	var FinishStudy = 4 * StartPomodoro
-	switch FinishStudy {
-	case < 4 :
-		return c.JSON(http.StatusOK, echo.Map{
-			"message": "You are almost done! Keep going", 
-		)}
-	case 4 : 
-		return c.JSON(http.StatusOK, echo.Map{
-			"message": "Finish! You are doing great job!",
-		)}
-	default :
-	}
-	//save ke report ???
+//menampilkan status timer pause
+func PauseTimerController(c echo.Context) error {
+	status := c.Param("pause")
+	database.PauseTimer(status)
+	return c.JSON(http.StatusOK, echo.Map{
+		"message" : "You're not done yet!Lets go back to study!",
+	})
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//pomodoro timer
+// func StartPomodoro(cycles int64) {
+// 	//Belajar 25 menit
+// 	var minutesPassed int64 = 0
+// 	for i := 0; i < 25; i++ {
+// 		time.Sleep(time.Minute * 1)
+// 		minutesPassed++
+// 		t := 25 - minutesPassed
+// 		return StartStudy
+// 	}
+// 	return PauseTimer
+
+// 	// Break 5 menit
+// 	minutesPassed = 0
+// 	for i := 0; i < 5; i++ {
+// 		time.Sleep(time.Minute * 1)
+// 		minutesPassed++
+// 		t := 5 - minutesPassed
+// 		return BreakStudy
+// 	}
+// 	return StartStudy
+// }
+

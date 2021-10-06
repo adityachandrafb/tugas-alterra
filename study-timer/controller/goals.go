@@ -42,13 +42,13 @@ func UpdateGoalsByIDController(c echo.Context) error {
 	var goal model.Goal
 	if err := c.Bind(&goal); err != nil {
 		return c.JSON(http.StatusOK, echo.Map{
-			"message": "UpdateGoalsByIDController",
+			"message": "Cant Update Goals B ID",
 			"error":   err.Error(),
 		})
 	}
 	database.UpdateGoalsByID(id, goal)
 	return c.JSON(http.StatusOK, echo.Map{
-		"message": "GetGoalsByIDController",
+		"message": "Succecs Update Goal By ID",
 		"data":    goal,
 	})
 }

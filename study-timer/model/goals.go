@@ -12,6 +12,6 @@ type Goal struct {
 	TargetTime		int			`json:"target_time"`
 	StartDate 		time.Time	`json:"start_date"`
 	FinishDate		time.Time	`json:"finish_date"`
-	UserID			uint		`json:"user_id"`	
-	User			*User 		`json:"user,omitempty"`
+	UserID      	uint       	 `json:"userid"`
+	User        	 *User       `json:"user,omitempty"`	
 }

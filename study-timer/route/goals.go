@@ -6,7 +6,7 @@ import (
 )
 
 func NewGoal(app *echo.Echo) {
-	app.GET("/goals", controller.GetAllGoalsController)
+	// app.GET("/goals", controller.GetAllGoalsController)
 	app.POST("/goals", controller.CreateGoalsController)
 	app.GET("/goals/:id", controller.GetGoalsByIDController)
 	app.DELETE("/goals/:id", controller.DeleteGoalsByIDController)

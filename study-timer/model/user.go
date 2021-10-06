@@ -2,17 +2,19 @@ package model
 
 import (
 	"time"
-	"gorm.io/gorm"
+	//"gorm.io/gorm"
 )
 
+
 type User struct {
-	gorm.Model
+	//gorm.Model
 	ID      	 uint   `gorm:"primarykey"`
 	Username    string 	`json:"username"`
 	Email    	string	`json:"email"`
-	Password 	string 	`json:"password"`
-	Task		[]*Task `json:"task"`
-	//CreatedAt time.Time `json:"created_at"`
-	DeletedAt	*time.Time `json:"deleted_at"`
-	Token 		string 		`json:"token"`
+	Password 	string 	`json:"password,omitempty"`
+	Task		[]*Task  `json:"task"`
+	Goal		[]*Goal  `json:"goal"`
+	CreatedAt 	time.Time `json:"createdAt"`
+	DeletedAt	*time.Time `json:"deletedAt"`
+	Token 		string 	    `json:"token"`
 }

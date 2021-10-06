@@ -51,6 +51,7 @@ func InitMigration() {
 		&model.Task{},
 		&model.Goal{},
 		&model.Notification{},
+		&model.Respon{},
 
 	)
 }

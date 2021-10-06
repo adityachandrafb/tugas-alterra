@@ -21,21 +21,13 @@ func CreateToken(userId int) (string, error) {
 
 }
 
-func ExtractTokenUserId( e echo.Context) int {
-	user := e.Get("user").(*jwt.Token)
-	
-	if user.Valid {
-		claims := user.Claims.(jwt.MapClaims)
-		userId := claims["userId"].(int)
-		return userId
-	}
-	return 0
-}
-
-
-func JWTAuthMiddleware(next echo.HandlerFunc) echo.HandlerFunc {
+func AuthJWTMiddleware(next echo.HandlerFunc) echo.HandlerFunc {
 	return func(c echo.Context) error {
 		authorizationFromHeader := c.Request().Header.Get("authorization")
+		if authorizationFromHeader == "" {
+			return c.String(http.StatusForbidden, "Forbidden")
+		}
+
 		tokenString := strings.ReplaceAll(authorizationFromHeader, "Bearer ", "")
 
 		claims := jwt.MapClaims{}
@@ -43,10 +35,50 @@ func JWTAuthMiddleware(next echo.HandlerFunc) echo.HandlerFunc {
 			return []byte(key), nil
 		})
 		if err != nil && !token.Valid {
-			return c.String(http.StatusForbidden, "Wrong Token")
+			return c.String(http.StatusForbidden, "Token Salah")
 		}
 
 		c.Set("email", claims["userId"])
 		return next(c)
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+// func ExtractTokenUserId( e echo.Context) int {
+// 	user := e.Get("user").(*jwt.Token)
+	
+// 	if user.Valid {
+// 		claims := user.Claims.(jwt.MapClaims)
+// 		userId := claims["userId"].(int)
+// 		return userId
+// 	}
+// 	return 0
+// }
+
+
+// func JWTAuthMiddleware(next echo.HandlerFunc) echo.HandlerFunc {
+// 	return func(c echo.Context) error {
+// 		authorizationFromHeader := c.Request().Header.Get("authorization")
+// 		tokenString := strings.ReplaceAll(authorizationFromHeader, "Bearer ", "")
+
+// 		claims := jwt.MapClaims{}
+// 		token, err := jwt.ParseWithClaims(tokenString, &claims, func(t *jwt.Token) (interface{}, error) {
+// 			return []byte(key), nil
+// 		})
+// 		if err != nil && !token.Valid {
+// 			return c.String(http.StatusForbidden, "Wrong Token")
+// 		}
+
+// 		c.Set("email", claims["userId"])
+// 		return next(c)
+// 	}
+// }

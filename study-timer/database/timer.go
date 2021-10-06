@@ -5,20 +5,21 @@ import (
 	"study-timer/model"
 )
 
-func StartTimer() model.Pomodoro {
-	var start model.Pomodoro
-	config.DB.Where("loop is null").Find(&start)
+
+func StartTimer(status string) model.Respon {
+	var start model.Respon
+	config.DB.Find(&start)
 	return start
 }
 
-func PauseTimer(id string) model.Pomodoro {
-	var pause model.Pomodoro
-	config.DB.Where("min is not 25", id).Find(&pause)
-	return pause
+func StopTimer(status string) model.Respon {
+	var stop model.Respon
+	config.DB.Find(&stop)
+	return stop
 }
 
-func BreakTimer(id string) model.Pomodoro {
-	var breaks model.Pomodoro
-	config.DB.Where("min is 25", id).Find(&breaks)
-	return breaks
+func PauseTimer(status string) model.Respon {
+	var pause model.Respon
+	config.DB.Find(&pause)
+	return pause
 }
