@@ -14,8 +14,3 @@ func GetMusicAudioController(c echo.Context) error {
 		"dictionary": result,
 	})
 }
-
-// func main() {
-// 	result := GetArtist()
-// 	fmt.Println(result.AAAA)
-// }
