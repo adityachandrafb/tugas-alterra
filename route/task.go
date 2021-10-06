@@ -11,7 +11,7 @@ func NewTask(app *echo.Echo) {
 	app.GET("/tasks", controller.GetAllTasksController, middleware.AuthJWTMiddleware)
 	app.POST("/tasks", controller.CreateTaskController)
 	app.GET("/tasks/:id", controller.GetTaskByIDController)
-	app.DELETE("/tasks/:id", controller.DeleteTaskByIDController)
-	app.PUT("/tasks/:id", controller.UpdateTaskByIDController)
+	app.DELETE("/tasks/:id", controller.DeleteTaskByIDController, middleware.AuthJWTMiddleware)
+	app.PUT("/tasks/:id", controller.UpdateTaskByIDController, middleware.AuthJWTMiddleware)
 }
 

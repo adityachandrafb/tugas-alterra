@@ -13,7 +13,7 @@ func NewUser(app *echo.Echo) {
 	app.POST("/users", controller.CreateUserController)
 	app.POST("/users/login", controller.LoginUserController)
 	app.GET("/users/:id", controller.GetUserByIDController, middleware.AuthJWTMiddleware)
-	app.DELETE("/users/:id", controller.DeleteUserByIDController)
-	app.PUT("/users/:id", controller.UpdateUserByIDController)
+	app.DELETE("/users/:id", controller.DeleteUserByIDController, middleware.AuthJWTMiddleware)
+	app.PUT("/users/:id", controller.UpdateUserByIDController, middleware.AuthJWTMiddleware)
 }
 
