@@ -6,5 +6,8 @@ import (
 )
 type Report struct {
 	gorm.Model
-	Week			int			`json:"week"`
+	Week			int		`json:"week"`
+	Completed 		bool 		`json:"completed,omitempty"`
+	Goal			*Goal 		`json:"goal,omitempty"`
+	GoalID			uint		`json:"user_id"`
 }
