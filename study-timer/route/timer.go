@@ -5,8 +5,9 @@ import (
 	"study-timer/controller"
 )
 
-func NewTimer(app *echo.Echo) {
+func NewRespon(app *echo.Echo) {
 	app.GET("/timer", controller.StartTimerController)
-	app.GET("/timer", controller.PauseTimeControllerr)
-	app.GET("/timer", controller.BreakTimerController)
+	app.GET("/timer", controller.StopTimerController)
+	app.GET("/timer", controller.PauseTimerController)
 }
+

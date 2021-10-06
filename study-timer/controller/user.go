@@ -12,27 +12,17 @@ import (
 func GetAllUsersController(c echo.Context) error {
 	users := database.GetUsers()
 	return c.JSON(http.StatusOK, echo.Map{
-		"message": "GetAllUsersController",
+		"message": "Succecs Get All Users",
 		"data":    users,
 	})
 }
 
- //menampilkan data user dengan ID
-func GetUserByIDController(c echo.Context) error {
-	id := c.Param("id")
-	user := database.GetUserByID(id)
-	return c.JSON(http.StatusOK, echo.Map{
-		"message": "GetUserByIDController",
-		"data":    user,
-	})
-}
-
- //menghapus data user dg ID
+//menghapus data user
 func DeleteUserByIDController(c echo.Context) error {
 	id := c.Param("id")
 	database.DeleteUserByID(id)
 	return c.JSON(http.StatusOK, echo.Map{
-		"message": "DeleteUserByIDController",
+		"message": "Succecs Delete User By ID",
 	})
 }
 
@@ -43,13 +33,13 @@ func UpdateUserByIDController(c echo.Context) error {
 	var user model.User
 	if err := c.Bind(&user); err != nil {
 		return c.JSON(http.StatusOK, echo.Map{
-			"message": "UpdateUserByIDController",
+			"message": "Can't Updates User By ID, Try Again!",
 			"error":   err.Error(),
 		})
 	}
 	database.UpdateUserByID(id, user)
 	return c.JSON(http.StatusOK, echo.Map{
-		"message": "GetUserByIDController",
+		"message": "Succecs Updates User By ID",
 		"data":    user,
 	})
 }
@@ -59,7 +49,7 @@ func CreateUserController(c echo.Context) error {
 	var newUser model.User
 	if err := c.Bind(&newUser); err != nil {
 		return c.JSON(http.StatusOK, echo.Map{
-			"message": "CreateUserController",
+			"message": "Can't Create User, Try Again!",
 			"error":   err.Error(),
 		})
 	}
@@ -67,11 +57,11 @@ func CreateUserController(c echo.Context) error {
 	newUser = database.CreateUser(newUser)
 	newUser.Password = ""
 	return c.JSON(http.StatusOK, echo.Map{
-		"message": "CreateUserController",
+		"message": "Success Creates User",
 		"data":    newUser,
 	})
 }
-
+//fungsi login user
 func LoginUserController (c echo.Context) error {
 	user := model.User{}
 	c.Bind(&user)
@@ -87,7 +77,7 @@ func LoginUserController (c echo.Context) error {
 	})
 }
 
-func GetUserDetailController(c echo.Context) error {
+func GetUserByIDController(c echo.Context) error {
 	id, err := strconv.Atoi(c.Param("id"))
 
 	if err != nil {
@@ -101,8 +91,33 @@ func GetUserDetailController(c echo.Context) error {
 	}
   
 	return c.JSON(http.StatusOK, map[string]interface{}{
-	  "status": "login success",
+	  "status": "Login success",
 	  "user": users,
 	})
   
   }
+
+
+
+  //  //menampilkan data user dengan ID
+// func GetUserByIDController(c echo.Context) error {
+// 	id := c.Param("id")
+// 	user := database.GetUserByID(id)
+// 	return c.JSON(http.StatusOK, echo.Map{
+// 		"message": "GetUserByIDController",
+// 		"data":    user,
+// 	})
+// }
+
+ //menghapus data user dg ID
+
+//  func CreateToken(userId int) (string, error) {
+// 	claims := jwt.MapClaims {}
+// 	claims["authorized"] = true
+// 	claims["userId"] = userId
+// 	claims["exp"] = time.Now().Add(time.Hour).Unix()
+
+// 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
+// 	return token.SignedString([]byte(key))
+
+// }
