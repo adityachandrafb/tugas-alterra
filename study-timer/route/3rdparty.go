@@ -5,6 +5,6 @@ import (
 	"github.com/labstack/echo"
 )
 
-func Audio(e *echo.Echo) {
-	e.GET("/music/:audio", controller.GetMusicAudioController)
+func Audio(app *echo.Echo) {
+	app.GET("/music/:audio", controller.GetMusicAudioController)
 }

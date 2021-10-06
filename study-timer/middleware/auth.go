@@ -4,14 +4,14 @@ import (
 	"net/http"
 	"strings"
 	"time"
-	"github.com/dgrijalva/jwt-go"
+	jwt "github.com/dgrijalva/jwt-go"
 	"github.com/labstack/echo"
 )
 
 const key = "legal"
 
 func CreateToken(userId int) (string, error) {
-	claims := jwt.MapClaims {}
+	claims := jwt.MapClaims{}
 	claims["authorized"] = true
 	claims["userId"] = userId
 	claims["exp"] = time.Now().Add(time.Hour).Unix()
@@ -43,19 +43,9 @@ func AuthJWTMiddleware(next echo.HandlerFunc) echo.HandlerFunc {
 	}
 }
 
-
-
-
-
-
-
-
-
-
-
 // func ExtractTokenUserId( e echo.Context) int {
 // 	user := e.Get("user").(*jwt.Token)
-	
+
 // 	if user.Valid {
 // 		claims := user.Claims.(jwt.MapClaims)
 // 		userId := claims["userId"].(int)
@@ -63,7 +53,6 @@ func AuthJWTMiddleware(next echo.HandlerFunc) echo.HandlerFunc {
 // 	}
 // 	return 0
 // }
-
 
 // func JWTAuthMiddleware(next echo.HandlerFunc) echo.HandlerFunc {
 // 	return func(c echo.Context) error {

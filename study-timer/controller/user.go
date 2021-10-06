@@ -72,8 +72,8 @@ func LoginUserController (c echo.Context) error {
 	}
 
 	return c.JSON(http.StatusOK, map[string]interface{}{
-			"message": "Your Login is Succesfully! Welcome back!",
-			"token":   token,
+			"message" : "Login succecs",
+			"token" :   token,
 	})
 }
 
