@@ -5,7 +5,6 @@ import (
 	"study-timer/model"
 )
 
-
 func StartTimer(status string) model.Respon {
 	var start model.Respon
 	config.DB.Find(&start)
