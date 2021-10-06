@@ -8,10 +8,11 @@ import (
 type Goal struct {
 	gorm.Model
 	ID       		uint   		`gorm:"primarykey"`
-	TargetDay		int			`json:"target_day"`
-	TargetTime		int			`json:"target_time"`
+	TargetDay		int		`json:"target_day"`
+	TargetTime		int		`json:"target_time"`
 	StartDate 		time.Time	`json:"start_date"`
 	FinishDate		time.Time	`json:"finish_date"`
-	UserID      	uint       	 `json:"userid"`
-	User        	 *User       `json:"user,omitempty"`	
+	UserID      		uint       	 `json:"userid"`
+	User        	 	*User       	`json:"user,omitempty"`	
+	Report			*Report		`json:"report,omitempty"`
 }
