@@ -1,0 +1,470 @@
+swagger: '2.0'
+info:
+  version: '1.0'
+  title: Study-timer
+  contact: {}
+host: localhost:8080
+basePath: /
+schemes:
+- http
+consumes:
+- application/json
+produces:
+- application/json
+paths:
+  /users:
+    get:
+      summary: Get User
+      tags:
+      - User
+      operationId: GetUser
+      deprecated: false
+      produces:
+      - application/json
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+    post:
+      description: Post user
+      summary: Create User
+      tags:
+      - User
+      operationId: CreateUser
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/CreateUserRequest'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /users/5:
+    get:
+      summary: Get User By ID
+      tags:
+      - User
+      operationId: GetUserByID
+      deprecated: false
+      produces:
+      - application/json
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /users/7:
+    delete:
+      summary: Delete User By ID
+      tags:
+      - User
+      operationId: DeleteUserByID
+      deprecated: false
+      produces:
+      - application/json
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /users/4:
+    put:
+      summary: Update User by ID
+      tags:
+      - User
+      operationId: UpdateUserbyID
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/UpdateUserbyIDRequest'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /goals:
+    post:
+      description: Post user
+      summary: Post Goals
+      tags:
+      - Goals
+      operationId: PostGoals
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          example: >-
+            {
+
+                "target_day" : 6,
+
+                "target_time" : 30,
+
+                "start_date" : 2021-10-10 T01:02:03Z,
+
+                "finish_date" : 2021-10-15 T11:22:33Z,
+
+                "user_id" : 3
+
+            }
+          type: string
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /goals/id:
+    get:
+      summary: Find Goals By ID
+      tags:
+      - Goals
+      operationId: FindGoalsByID
+      deprecated: false
+      produces:
+      - application/json
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+    delete:
+      summary: Delete Goals By ID
+      tags:
+      - Goals
+      operationId: DeleteGoalsByID
+      deprecated: false
+      produces:
+      - application/json
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+    put:
+      summary: Update Goals by ID
+      tags:
+      - Goals
+      operationId: UpdateGoalsbyID
+      deprecated: false
+      produces:
+      - application/json
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /task:
+    get:
+      summary: Get Task
+      tags:
+      - Task
+      operationId: GetTask
+      deprecated: false
+      produces:
+      - application/json
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /tasks:
+    post:
+      description: Post user
+      summary: Post Task
+      tags:
+      - Task
+      operationId: PostTask
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/PostTaskRequest'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /tasks/5:
+    get:
+      summary: Find Task By ID
+      tags:
+      - Task
+      operationId: FindTaskByID
+      deprecated: false
+      produces:
+      - application/json
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /tasks/"Math":
+    get:
+      summary: Find Task By Name
+      tags:
+      - Task
+      operationId: FindTaskByName
+      deprecated: false
+      produces:
+      - application/json
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /tasks/id:
+    delete:
+      summary: Delete Task By ID
+      tags:
+      - Task
+      operationId: DeleteTaskByID
+      deprecated: false
+      produces:
+      - application/json
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+    put:
+      summary: Update Task by ID
+      tags:
+      - Task
+      operationId: UpdateTaskbyID
+      deprecated: false
+      produces:
+      - application/json
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /reports:
+    get:
+      summary: Get Report
+      tags:
+      - Report
+      operationId: GetReport
+      deprecated: false
+      produces:
+      - application/json
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+    post:
+      description: Post user
+      summary: Post Report
+      tags:
+      - Report
+      operationId: PostReport
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/PostReportRequest'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /reports/id:
+    get:
+      summary: Get Report By ID
+      tags:
+      - Report
+      operationId: GetReportByID
+      deprecated: false
+      produces:
+      - application/json
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /reports/week:
+    get:
+      summary: Get Report By Date/Week
+      tags:
+      - Report
+      operationId: GetReportByDate/Week
+      deprecated: false
+      produces:
+      - application/json
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /users/3:
+    get:
+      summary: Get Notif
+      tags:
+      - Notification
+      operationId: GetNotif
+      deprecated: false
+      produces:
+      - application/json
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /users/2:
+    delete:
+      summary: Delete Notif
+      tags:
+      - Notification
+      operationId: DeleteNotif
+      deprecated: false
+      produces:
+      - application/json
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /timer:
+    get:
+      summary: Start
+      tags:
+      - Timer
+      operationId: Start
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: start
+        in: query
+        required: true
+        type: string
+        description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+definitions:
+  CreateUserRequest:
+    title: CreateUserRequest
+    example:
+      name: Adi
+      email: Adi@gmail.com
+      password: '123123'
+    type: object
+    properties:
+      name:
+        type: string
+      email:
+        type: string
+      password:
+        type: string
+    required:
+    - name
+    - email
+    - password
+  UpdateUserbyIDRequest:
+    title: UpdateUserbyIDRequest
+    example:
+      name: Be
+      email: bel@gmail.com
+    type: object
+    properties:
+      name:
+        type: string
+      email:
+        type: string
+    required:
+    - name
+    - email
+  PostTaskRequest:
+    title: PostTaskRequest
+    example:
+      name: Math
+      deadline: 2022-11-11T11:22:33Z
+      priority: true
+      user_id: 3
+    type: object
+    properties:
+      name:
+        type: string
+      deadline:
+        type: string
+      priority:
+        type: boolean
+      user_id:
+        type: integer
+        format: int32
+    required:
+    - name
+    - deadline
+    - priority
+    - user_id
+  PostReportRequest:
+    title: PostReportRequest
+    example:
+      name: Febri
+      email: Febri@gmail.com
+      password: '123123'
+    type: object
+    properties:
+      name:
+        type: string
+      email:
+        type: string
+      password:
+        type: string
+    required:
+    - name
+    - email
+    - password
+  CreateNotifRequest:
+    title: CreateNotifRequest
+    example:
+      name: Adi
+      email: Adi@gmail.com
+      password: '123123'
+    type: object
+    properties:
+      name:
+        type: string
+      email:
+        type: string
+      password:
+        type: string
+    required:
+    - name
+    - email
+    - password
+tags:
+- name: User
+- name: Goals
+- name: Task
+- name: Report
+- name: Notification
+- name: Timer
+- name: Music
